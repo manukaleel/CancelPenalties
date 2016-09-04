@@ -11,30 +11,19 @@ namespace CancelPenalties
         static void Main(string[] args)
         {
             var cancellationPolicyProvider = new CancellationPolicyProvider();
-            var cancelData = new CancelData {AdvancePurchase = true, DeadlineDays = 0};
 
-            var text = cancellationPolicyProvider.Build(new AdvancePurchaseBuilder(), cancelData);
+            var cancelData = new CancelData {AdvancePurchase = true, DeadlineDays = 0, Amount = 10};
+            
+            var text = cancellationPolicyProvider.Build(new AdvancePurchaseBuilder(cancelData), cancelData);
+            Console.Write(text + "\n\n");
 
+            text = cancellationPolicyProvider.Build(new FullStayBuilder(cancelData), cancelData);
+            Console.Write(text + "\n\n");
 
-            Console.Write(text);
+            text = cancellationPolicyProvider.Build(new FlexibleCancelPenalty(cancelData), cancelData);
+            Console.Write(text + "\n\n");
 
             Console.ReadLine();
-        }
-    }
-
-    
-
-    public class CancellationPolicyProvider
-    {
-        public string Build(ICancellationBuilder cancellationBuilder, CancelData cancelData)
-        {
-            string cancellationText;
-
-            cancellationText = cancellationBuilder.BuildFirstSection(cancelData);
-            cancellationText += cancellationBuilder.BuildFirstSection(cancelData);
-            cancellationText += cancellationBuilder.BuildEndSection(cancelData);
-
-            return cancellationText;
         }
     }
 }

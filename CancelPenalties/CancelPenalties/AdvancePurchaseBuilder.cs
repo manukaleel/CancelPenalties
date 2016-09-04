@@ -4,17 +4,24 @@ namespace CancelPenalties
 {
     public class AdvancePurchaseBuilder: ICancellationBuilder
     {
-        public string BuildFirstSection(CancelData cancelData)
+        private CancelData _cancelData;
+
+        public AdvancePurchaseBuilder(CancelData cancelData)
+        {
+            _cancelData = cancelData;
+        }
+
+        public string BuildFirstSection()
         {
             return "This is an Advanced purchase";
         }
 
-        public string BuildMiddleSection(CancelData cancelData)
+        public string BuildMiddleSection()
         {
             return "";
         }
 
-        public string BuildEndSection(CancelData cancelData)
+        public string BuildEndSection()
         {
             return "";
         }

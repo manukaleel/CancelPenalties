@@ -45,8 +45,9 @@
   <ItemGroup>
     <Compile Include="AdvancePurchaseBuilder.cs" />
     <Compile Include="CancelData.cs" />
+    <Compile Include="CancellationPolicyProvider.cs" />
     <Compile Include="FlexibleCancelPenalty.cs" />
-    <Compile Include="FullStay.cs" />
+    <Compile Include="FullStayBuilder.cs" />
     <Compile Include="ICancellationBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Runtime.Remoting.Channels;
 
 namespace CancelPenalties
 {
-    public class FlexibleCancelPenalty : ICancellationBuilder
+    public class FullStayBuilder : ICancellationBuilder
     {
         private CancelData _cancelData;
 
-        public FlexibleCancelPenalty(CancelData cancelData)
+        public FullStayBuilder(CancelData cancelData)
         {
             _cancelData = cancelData;
         }
@@ -18,12 +19,12 @@ namespace CancelPenalties
 
         public string BuildMiddleSection()
         {
-            return string.Format("You can cancel free until {0} days", _cancelData.DeadlineDays);
+            return string.Format("You can cancel until {0} before the date of arrival", _cancelData.DeadlineDays);
         }
 
         public string BuildEndSection()
         {
-            return string.Format("If cancelled later {0} will be charged", _cancelData.Amount);
+            return "If you cancel later the full stay amount will be charged";
         }
     }
 }

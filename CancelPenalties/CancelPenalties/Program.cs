@@ -12,15 +12,18 @@ namespace CancelPenalties
         {
             var cancellationPolicyProvider = new CancellationPolicyProvider();
 
-            var cancelData = new CancelData {AdvancePurchase = true, DeadlineDays = 0, Amount = 10};
-            
-            var text = cancellationPolicyProvider.Build(new AdvancePurchaseBuilder(cancelData), cancelData);
+            var cancelDataList = new List<CancelData>
+            {
+                new CancelData {AdvancePurchase = true, DeadlineDays = 0, Amount = 10}
+            };
+
+            var text = cancellationPolicyProvider.Build(new AdvancePurchaseBuilder(cancelDataList), cancelDataList);
             Console.Write(text + "\n\n");
 
-            text = cancellationPolicyProvider.Build(new FullStayBuilder(cancelData), cancelData);
+            text = cancellationPolicyProvider.Build(new FullStayBuilder(cancelDataList), cancelDataList);
             Console.Write(text + "\n\n");
 
-            text = cancellationPolicyProvider.Build(new FlexibleCancelPenalty(cancelData), cancelData);
+            text = cancellationPolicyProvider.Build(new FlexibleCancelPenalty(cancelDataList), cancelDataList);
             Console.Write(text + "\n\n");
 
             Console.ReadLine();

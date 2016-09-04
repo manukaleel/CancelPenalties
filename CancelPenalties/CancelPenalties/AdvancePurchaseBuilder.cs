@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CancelPenalties
 {
     public class AdvancePurchaseBuilder: ICancellationBuilder
     {
-        private CancelData _cancelData;
+        private List<CancelData> _cancelData;
 
-        public AdvancePurchaseBuilder(CancelData cancelData)
+        public AdvancePurchaseBuilder(List<CancelData> cancelData)
         {
             _cancelData = cancelData;
         }

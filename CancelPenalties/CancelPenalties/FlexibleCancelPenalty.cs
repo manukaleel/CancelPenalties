@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CancelPenalties
 {
     public class FlexibleCancelPenalty : ICancellationBuilder
     {
-        private CancelData _cancelData;
+        private List<CancelData> _cancelData;
 
-        public FlexibleCancelPenalty(CancelData cancelData)
+        public FlexibleCancelPenalty(List<CancelData> cancelData)
         {
             _cancelData = cancelData;
         }
@@ -18,12 +20,12 @@ namespace CancelPenalties
 
         public string BuildMiddleSection()
         {
-            return string.Format("You can cancel free until {0} days", _cancelData.DeadlineDays);
+            return string.Format("You can cancel free until {0} days", _cancelData.First().DeadlineDays);
         }
 
         public string BuildEndSection()
         {
-            return string.Format("If cancelled later {0} will be charged", _cancelData.Amount);
+            return string.Format("If cancelled later {0} will be charged", _cancelData.First().Amount);
         }
     }
 }

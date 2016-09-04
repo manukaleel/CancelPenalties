@@ -1,8 +1,10 @@
-﻿namespace CancelPenalties
+﻿using System.Collections.Generic;
+
+namespace CancelPenalties
 {
     public class CancellationPolicyProvider
     {
-        public string Build(ICancellationBuilder cancellationBuilder, CancelData cancelData)
+        public string Build(ICancellationBuilder cancellationBuilder, List<CancelData> cancelData)
         {
             string cancellationText;
 

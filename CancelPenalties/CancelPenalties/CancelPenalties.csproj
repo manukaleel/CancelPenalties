@@ -46,6 +46,7 @@
     <Compile Include="AdvancePurchaseBuilder.cs" />
     <Compile Include="CancelData.cs" />
     <Compile Include="CancellationPolicyProvider.cs" />
+    <Compile Include="CommonCancellation.cs" />
     <Compile Include="FlexibleCancelPenalty.cs" />
     <Compile Include="FullStayBuilder.cs" />
     <Compile Include="ICancellationBuilder.cs" />

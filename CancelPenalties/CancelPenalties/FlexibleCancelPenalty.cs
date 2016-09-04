@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CancelPenalties
 {
-    public class FlexibleCancelPenalty : ICancellationBuilder
+    public class FlexibleCancelPenalty : CommonCancellation, ICancellationBuilder
     {
         private List<CancelData> _cancelData;
 
@@ -15,12 +15,12 @@ namespace CancelPenalties
 
         public string BuildFirstSection()
         {
-            return "Credit card required to secure your booking";
+            return base.StartingText;
         }
 
         public string BuildMiddleSection()
         {
-            return string.Format("You can cancel free until {0} days", _cancelData.First().DeadlineDays);
+            return string.Format(base.DeadlineText, _cancelData.First().DeadlineDays);
         }
 
         public string BuildEndSection()

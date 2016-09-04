@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Channels;
 
 namespace CancelPenalties
 {
-    public class FullStayBuilder : ICancellationBuilder
+    public class FullStayBuilder : CommonCancellation, ICancellationBuilder
     {
         private List<CancelData> _cancelData;
 
@@ -16,12 +16,12 @@ namespace CancelPenalties
 
         public string BuildFirstSection()
         {
-            return "Credit card required to secure your booking";
+            return base.StartingText;
         }
 
         public string BuildMiddleSection()
         {
-            return string.Format("You can cancel until {0} before the date of arrival", _cancelData.First().DeadlineDays);
+            return string.Format(base.DeadlineText, _cancelData.First().DeadlineDays);
         }
 
         public string BuildEndSection()
